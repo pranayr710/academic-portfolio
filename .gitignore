@@ -25,7 +25,7 @@ dist-ssr
 
 # Backups and legacy files
 _static_backup
-assets/
+
 .gemini/
 *.tmp
 
