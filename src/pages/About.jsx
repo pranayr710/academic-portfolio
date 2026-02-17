@@ -1,5 +1,6 @@
 
 import { motion } from 'framer-motion';
+import certImg from '../assets/qualcomm_cert.jpg';
 
 const About = () => {
     return (
@@ -83,9 +84,27 @@ const About = () => {
                         <h4 style={{ color: 'var(--text-bright)', fontSize: '1.1rem', fontWeight: '600', marginBottom: '4px' }}>
                             Qualcomm AI Upskilling Program
                         </h4>
-                        <p style={{ color: 'var(--text-dim)', fontSize: '0.9rem' }}>
+                        <p style={{ color: 'var(--text-dim)', fontSize: '0.9rem', marginBottom: '12px' }}>
                             Completed — Focused on edge AI deployment and model optimization techniques.
                         </p>
+                        <div style={{
+                            width: '100%',
+                            height: '180px',
+                            borderRadius: '4px',
+                            overflow: 'hidden',
+                            border: '1px solid rgba(100, 255, 218, 0.1)'
+                        }}>
+                            <img
+                                src={certImg}
+                                alt="Qualcomm AI Certificate"
+                                style={{
+                                    width: '100%',
+                                    height: '100%',
+                                    objectFit: 'cover',
+                                    filter: 'grayscale(0.2) contrast(1.1)'
+                                }}
+                            />
+                        </div>
                     </div>
 
                     {/* Resume CTA */}
