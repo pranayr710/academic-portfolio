@@ -60,7 +60,6 @@ const Contact = () => {
                 <a href="/academic-portfolio/Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary">
                     Download Resume
                 </a>
-                <a href="https://pranayr710.github.io/academic-portfolio/" className="btn-outline" style={{ color: 'var(--text-dim)', border: '1px solid var(--bg-light)', padding: '12px 24px', borderRadius: '4px', textDecoration: 'none', transition: '0.2s', fontSize: '0.85rem' }}>Portfolio URL</a>
             </motion.div>
 
             <motion.div
