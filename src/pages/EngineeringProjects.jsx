@@ -3,6 +3,19 @@ import { motion } from 'framer-motion';
 
 const featuredProjects = [
     {
+        title: "FaceRec Pro — Biometric Intelligence & Surveillance Lab",
+        description: "An advanced real-time biometric telemetry platform providing high-fidelity monitoring across neurological, psychological, and cognitive dimensions. Optimized for forensic audit and secure access with a performance-first systems architecture.",
+        impact: "Sub-20ms inference latency with multi-modal data fusion (Gaze + Emotion + Head Pose)",
+        tags: ["Python", "FastAPI", "OpenCV", "WebSockets", "Dlib", "SQLAlchemy"],
+        link: "https://github.com/pranayr710/FaceRec-Pro-Dashboard",
+        highlights: [
+            "Neuro Laboratory: 3D Head Pose Estimation (Yaw/Pitch/Roll) via solvePnP",
+            "Psychology Suite: Real-time emotion mapping and stress probe telemetry",
+            "Cognitive Load: ATTENTION and PERCLOS (Drowsiness) monitoring logic",
+            "Broadcasting: Real-time WebSocket feed for biometric discovery logging"
+        ]
+    },
+    {
         title: "GeoDroneAI — Autonomous Delivery Route Optimizer",
         description: "AI-driven simulation for optimizing multi-drone delivery routes in urban environments. Implements A* pathfinding with dynamic obstacle avoidance, geospatial constraint modeling, and fleet coordination logic for last-mile logistics.",
         impact: "Reduced simulated delivery time by 34% vs. naive shortest-path routing",
@@ -91,7 +104,7 @@ const EngineeringProjects = () => {
             className="container"
             style={{ paddingTop: '100px', paddingBottom: '80px' }}
         >
-            <h2 className="section-title" data-num="02.">Engineering Projects</h2>
+            <h2 className="section-title" data-num="03.">Engineering Projects</h2>
             <p className="section-subtitle">
                 Systems engineering, full-stack development, and interactive tooling.
             </p>

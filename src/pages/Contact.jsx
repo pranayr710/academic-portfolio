@@ -57,7 +57,7 @@ const Contact = () => {
                 <a href="mailto:pranayraparla3@gmail.com" className="btn-primary">
                     Email Me
                 </a>
-                <a href="/Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary">
+                <a href="/academic-portfolio/Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary">
                     Download Resume
                 </a>
             </motion.div>

@@ -76,7 +76,7 @@ const Navbar = () => {
                     </li>
                 ))}
                 <li>
-                    <a href="/Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '6px 14px', fontSize: '0.72rem' }}>
+                    <a href="/academic-portfolio/Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '6px 14px', fontSize: '0.72rem' }}>
                         Resume
                     </a>
                 </li>
@@ -144,7 +144,7 @@ const Navbar = () => {
                                     {item.label}
                                 </NavLink>
                             ))}
-                            <a href="/Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ marginTop: '8px', fontSize: '0.75rem' }}>
+                            <a href="/academic-portfolio/Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ marginTop: '8px', fontSize: '0.75rem' }}>
                                 Resume
                             </a>
                         </motion.aside>

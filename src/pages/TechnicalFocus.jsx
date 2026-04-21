@@ -42,7 +42,7 @@ const TechnicalFocus = () => {
             className="container"
             style={{ paddingTop: '100px', paddingBottom: '80px' }}
         >
-            <h2 className="section-title" data-num="03.">Technical Focus</h2>
+            <h2 className="section-title" data-num="04.">Technical Focus</h2>
             <p className="section-subtitle">
                 Core areas of technical depth and ongoing investigation.
             </p>

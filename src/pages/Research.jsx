@@ -18,7 +18,7 @@ const Research = () => {
             className="container"
             style={{ paddingTop: '100px', paddingBottom: '80px' }}
         >
-            <h2 className="section-title" data-num="01.">Research</h2>
+            <h2 className="section-title" data-num="02.">Research</h2>
             <p className="section-subtitle">
                 Systems-level research in AI security and computer vision, conducted under faculty supervision.
             </p>

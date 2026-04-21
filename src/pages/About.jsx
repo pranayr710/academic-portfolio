@@ -1,6 +1,5 @@
 
 import { motion } from 'framer-motion';
-// import certImg from '../assets/qualcomm_cert.jpg';
 
 const About = () => {
     return (
@@ -84,33 +83,13 @@ const About = () => {
                         <h4 style={{ color: 'var(--text-bright)', fontSize: '1.1rem', fontWeight: '600', marginBottom: '4px' }}>
                             Qualcomm AI Upskilling Program
                         </h4>
-                        <p style={{ color: 'var(--text-dim)', fontSize: '0.9rem', marginBottom: '16px' }}>
+                        <p style={{ color: 'var(--text-dim)', fontSize: '0.9rem' }}>
                             Completed — Focused on edge AI deployment and model optimization techniques.
                         </p>
-
-                        <a href="/AI-Upskilling-certificate.pdf" target="_blank" rel="noopener noreferrer"
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                width: '100%',
-                                padding: '12px',
-                                background: 'rgba(100, 255, 218, 0.05)',
-                                border: '1px dashed var(--primary)',
-                                borderRadius: '4px',
-                                color: 'var(--primary)',
-                                fontSize: '0.85rem',
-                                fontFamily: 'var(--mono)',
-                                cursor: 'pointer',
-                                transition: 'var(--transition)',
-                                textDecoration: 'none'
-                            }}>
-                            <span>View Certificate (PDF)</span>
-                        </a>
                     </div>
 
                     {/* Resume CTA */}
-                    <a href="/Resume.pdf" target="_blank" className="btn-primary" style={{ textAlign: 'center', marginTop: '10px' }}>
+                    <a href="/academic-portfolio/Resume.pdf" target="_blank" className="btn-primary" style={{ textAlign: 'center', marginTop: '10px' }}>
                         Download Resume
                     </a>
                 </motion.div>

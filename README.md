@@ -44,16 +44,5 @@ This repository contains the source code for my professional portfolio, meticulo
    npm run dev
    ```
 
-## 🌐 Deployment
-
-### GitHub Pages
-This project is configured to deploy automatically via **GitHub Actions**. 
-1. Push changes to the `main` branch.
-2. Ensure **Settings > Pages > Source** is set to **GitHub Actions**.
-
-### Vercel
-1. Import the repository into Vercel.
-2. Vercel will automatically detect the Vite project and deploy the `dist` folder.
-
 ## 📄 License
 MIT License

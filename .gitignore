@@ -25,7 +25,11 @@ dist-ssr
 
 # Backups and legacy files
 _static_backup
-
+assets/
 .gemini/
 *.tmp
 
+
+# Local assets and decoupled projects
+projects/
+my_resume.pdf
