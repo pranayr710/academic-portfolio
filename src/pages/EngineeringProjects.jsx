@@ -6,7 +6,7 @@ const featuredProjects = [
         description: "A single-threaded monitor can't handle concurrent I/O without blocking. IFDMS uses a layered concurrent architecture: an asyncio event loop runs on a dedicated background thread managing a WebSocket server with multiple simultaneous clients (Chrome extension + desktop HUD), while a synchronous main loop runs the ML pipeline — with thread-safe shared state bridging both layers.",
         impact: "Concurrent asyncio + threading architecture · real-time multi-client WebSocket broadcast",
         tags: ["Python", "asyncio", "WebSockets", "Concurrent Systems", "Flask", "SQLite", "JavaScript"],
-        link: "https://github.com/pranayr710",
+        link: "https://github.com/pranayr710/ifdms",
         highlights: [
             "asyncio WebSocket server on a dedicated background thread",
             "Thread-safe BrowserState shared between async and sync layers",
@@ -62,7 +62,7 @@ const otherProjects = [
         description: "Complete interpreter for the MicroJava language: AST generation, SVG visualization, step-by-step debugger with breakpoints, and symbol table management with memory simulation.",
         impact: "Full pipeline: Lexer → Parser → AST → Interpreter → Debugger",
         tags: ["Java", "JavaFX", "Compilers", "AST"],
-        link: "https://github.com/pranayr710/ast-interpreter_java-"
+        link: "https://github.com/pranayr710/microjava-interpreter"
     },
     {
         title: "FastTyper — Adaptive Typing Trainer",
@@ -76,7 +76,8 @@ const otherProjects = [
         description: "Step-by-step visualizations of sorting algorithms, tree traversals, and graph algorithms. Vanilla JS + Canvas API — zero dependencies.",
         impact: "8 algorithms with adjustable speed and input size",
         tags: ["JavaScript", "Canvas API", "Algorithms"],
-        link: "https://github.com/pranayr710/DataStructures-Visualiser"
+        link: "https://github.com/pranayr710/DataStructures-Visualiser",
+        demo: "https://pranayr710.github.io/DataStructures-Visualiser/"
     },
     {
         title: "Movie Recommendation System",
@@ -150,11 +151,20 @@ const EngineeringProjects = () => {
                         <div>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
                                 <i className="ri-folder-2-line" style={{ fontSize: '1.6rem', color: 'var(--accent)' }} aria-hidden="true"></i>
-                                <a href={project.link} target="_blank" rel="noopener noreferrer"
-                                    aria-label={`${project.title} on GitHub`}
-                                    style={{ fontSize: '1.1rem', color: 'var(--text-dim)' }}>
-                                    <i className="ri-github-line"></i>
-                                </a>
+                                <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                                    <a href={project.link} target="_blank" rel="noopener noreferrer"
+                                        aria-label={`${project.title} on GitHub`}
+                                        style={{ fontSize: '1.1rem', color: 'var(--text-dim)' }}>
+                                        <i className="ri-github-line"></i>
+                                    </a>
+                                    {project.demo && (
+                                        <a href={project.demo} target="_blank" rel="noopener noreferrer"
+                                            aria-label={`${project.title} Live Demo`}
+                                            style={{ fontSize: '1.1rem', color: 'var(--text-dim)' }}>
+                                            <i className="ri-external-link-line"></i>
+                                        </a>
+                                    )}
+                                </div>
                             </div>
 
                             <h4 style={{ fontSize: '1.02rem', color: 'var(--text-bright)', marginBottom: '8px', fontWeight: '600' }}>

@@ -6,7 +6,7 @@ export const projectsData = [
         description: "Full-stack concurrent system monitoring browser activity in real time. Backend daemon runs an asyncio event loop on a dedicated thread, managing a WebSocket server with multiple simultaneous client connections (Chrome extension + HUD). Thread-safe shared state bridges the async WS layer and the synchronous main loop; 10+ coordinated modules (classifier, scorer, intervention engine, adaptive learner) run inside a single process with message-passing IPC.",
         impact: "Concurrent asyncio + threading architecture · real-time multi-client WebSocket broadcast · 10+ module pipeline",
         tags: ["Python", "asyncio", "WebSockets", "Concurrent Systems", "Flask", "SQLite", "JavaScript"],
-        link: "https://github.com/pranayr710",
+        link: "https://github.com/pranayr710/ifdms",
         category: "Systems",
         featured: true
     },
@@ -57,6 +57,7 @@ export const projectsData = [
         impact: "Visualizes 8 algorithms with adjustable speed and input size",
         tags: ["JavaScript", "Canvas API", "Algorithms", "HTML/CSS"],
         link: "https://github.com/pranayr710/DataStructures-Visualiser",
+        demo: "https://pranayr710.github.io/DataStructures-Visualiser/",
         category: "Web",
         featured: false
     },
@@ -66,7 +67,7 @@ export const projectsData = [
         description: "Full-stack hospital operations platform with normalized relational schema (3NF), role-based access control (Admin, Doctor, Patient), and RESTful API layer. Handles appointments, billing, and medical records.",
         impact: "15+ database tables with full CRUD and role-based auth",
         tags: ["Java", "SQL", "REST API", "System Design"],
-        link: "https://github.com/pranayr710/HospitalManahmentSystem",
+        link: "https://github.com/pranayr710/hospital-management-system",
         category: "Full Stack",
         featured: false
     }
