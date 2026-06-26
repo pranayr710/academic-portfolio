@@ -1,30 +1,15 @@
-
-import { motion } from 'framer-motion';
 import { C2PADiagram, StrawberryDiagram } from '../components/Diagrams';
-
-const fade = (delay = 0) => ({
-    initial: { opacity: 0, y: 15 },
-    animate: { opacity: 1, y: 0 },
-    transition: { delay, duration: 0.4 }
-});
+import Reveal from '../components/Reveal';
 
 const Research = () => {
     return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="container"
-            style={{ paddingTop: '100px', paddingBottom: '80px' }}
-        >
+        <div className="container page">
             <h2 className="section-title" data-num="01.">Research</h2>
             <p className="section-subtitle">
                 Systems-level research in AI security and computer vision, conducted under faculty supervision.
             </p>
 
-            {/* ==================== C2PA ==================== */}
-            <motion.section {...fade(0.1)} className="research-section" style={{ marginBottom: '80px' }}>
+            <Reveal as="section" className="research-section" style={{ marginBottom: '80px' }}>
                 <h3 className="research-heading">
                     Hybrid C2PA + AI Media Authentication System
                 </h3>
@@ -35,7 +20,6 @@ const Research = () => {
                     Manuscript preparation in progress for submission to peer-reviewed venue.
                 </p>
 
-                {/* 1. Problem Statement */}
                 <div className="research-block">
                     <h4 className="block-title">1. Problem Statement</h4>
                     <p className="block-text">
@@ -48,7 +32,6 @@ const Research = () => {
                     </p>
                 </div>
 
-                {/* 2. System Architecture */}
                 <div className="research-block">
                     <h4 className="block-title">2. System Architecture</h4>
                     <p className="block-text" style={{ marginBottom: '20px' }}>
@@ -60,7 +43,6 @@ const Research = () => {
                     <p className="diagram-caption">Fig. 1 — Hybrid verification pipeline with cryptographic-first, AI-fallback architecture.</p>
                 </div>
 
-                {/* 3. Technical Implementation */}
                 <div className="research-block">
                     <h4 className="block-title">3. Technical Implementation</h4>
                     <ul className="block-list">
@@ -72,7 +54,6 @@ const Research = () => {
                     </ul>
                 </div>
 
-                {/* 4. Experimental Evaluation */}
                 <div className="research-block">
                     <h4 className="block-title">4. Experimental Evaluation</h4>
                     <div className="metrics-grid">
@@ -98,9 +79,8 @@ const Research = () => {
                     </p>
                 </div>
 
-                {/* 5. Challenges & Trade-offs */}
                 <div className="research-block">
-                    <h4 className="block-title">5. Challenges & Trade-offs</h4>
+                    <h4 className="block-title">5. Challenges &amp; Trade-offs</h4>
                     <ul className="block-list">
                         <li>Increased ensemble latency (~320ms per sample) compared to single-model inference (~90ms). Mitigated by cryptographic pre-filtering.</li>
                         <li>C2PA metadata is absent in the majority of existing synthetic media, forcing reliance on the AI fallback path for legacy content.</li>
@@ -108,7 +88,6 @@ const Research = () => {
                     </ul>
                 </div>
 
-                {/* 6. Limitations */}
                 <div className="research-block">
                     <h4 className="block-title">6. Limitations</h4>
                     <ul className="block-list">
@@ -122,18 +101,16 @@ const Research = () => {
                 <a href="https://github.com/pranayr710/c2pa-ai-detector" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ marginTop: '20px' }}>
                     View on GitHub →
                 </a>
-            </motion.section>
+            </Reveal>
 
-            {/* ==================== STRAWBERRY ==================== */}
-            <motion.section {...fade(0.2)} className="research-section">
+            <Reveal as="section" className="research-section">
                 <h3 className="research-heading">
-                    AI-Based Strawberry Disease Detection & Validation Framework
+                    AI-Based Strawberry Disease Detection &amp; Validation Framework
                 </h3>
                 <p className="research-meta">
                     Computer Vision · Object Detection · Agricultural AI
                 </p>
 
-                {/* 1. Problem Statement */}
                 <div className="research-block">
                     <h4 className="block-title">1. Problem Statement</h4>
                     <p className="block-text">
@@ -142,7 +119,6 @@ const Research = () => {
                     </p>
                 </div>
 
-                {/* 2. Pipeline Architecture */}
                 <div className="research-block">
                     <h4 className="block-title">2. Detection Pipeline</h4>
                     <p className="block-text" style={{ marginBottom: '20px' }}>
@@ -154,7 +130,6 @@ const Research = () => {
                     <p className="diagram-caption">Fig. 2 — End-to-end detection pipeline from field image capture to disease classification.</p>
                 </div>
 
-                {/* 3. Technical Highlights */}
                 <div className="research-block">
                     <h4 className="block-title">3. Technical Highlights</h4>
                     <ul className="block-list">
@@ -165,7 +140,6 @@ const Research = () => {
                     </ul>
                 </div>
 
-                {/* 4. Evaluation */}
                 <div className="research-block">
                     <h4 className="block-title">4. Evaluation</h4>
                     <div className="metrics-grid">
@@ -188,7 +162,6 @@ const Research = () => {
                     </div>
                 </div>
 
-                {/* 5. Limitations */}
                 <div className="research-block">
                     <h4 className="block-title">5. Limitations</h4>
                     <ul className="block-list">
@@ -202,8 +175,8 @@ const Research = () => {
                 <a href="https://github.com/pranayr710/AI-Based-Strawberry-Disease-Detection-and-Validation-Framework" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ marginTop: '20px' }}>
                     View on GitHub →
                 </a>
-            </motion.section>
-        </motion.div>
+            </Reveal>
+        </div>
     );
 };
 

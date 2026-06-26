@@ -1,6 +1,16 @@
 
 export const projectsData = [
     {
+        id: 0,
+        title: "IFDMS — Concurrent Focus Monitoring System",
+        description: "Full-stack concurrent system monitoring browser activity in real time. Backend daemon runs an asyncio event loop on a dedicated thread, managing a WebSocket server with multiple simultaneous client connections (Chrome extension + HUD). Thread-safe shared state bridges the async WS layer and the synchronous main loop; 10+ coordinated modules (classifier, scorer, intervention engine, adaptive learner) run inside a single process with message-passing IPC.",
+        impact: "Concurrent asyncio + threading architecture · real-time multi-client WebSocket broadcast · 10+ module pipeline",
+        tags: ["Python", "asyncio", "WebSockets", "Concurrent Systems", "Flask", "SQLite", "JavaScript"],
+        link: "https://github.com/pranayr710",
+        category: "Systems",
+        featured: true
+    },
+    {
         id: 1,
         title: "C2PA AI Detector",
         description: "Built a hybrid media authentication pipeline combining cryptographic C2PA metadata verification with an ensemble of CNNs (EfficientNet-B0, ResNet-50) for deepfake detection. Trained on 10K+ real and AI-generated video samples.",
