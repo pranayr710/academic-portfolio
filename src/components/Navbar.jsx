@@ -48,7 +48,7 @@ const Navbar = () => {
                     </a>
                 </li>
                 <li>
-                    <a href={`${import.meta.env.BASE_URL}Resume.pdf?v=2`} target="_blank" rel="noopener noreferrer" className="btn-primary"
+                    <a href={`${import.meta.env.BASE_URL}Meghapranay_Raparla_Resume.pdf`} target="_blank" rel="noopener noreferrer" className="btn-primary"
                         style={{ padding: '7px 16px', fontSize: '0.72rem' }}>
                         resume
                     </a>
@@ -82,7 +82,7 @@ const Navbar = () => {
                     className="nav-link" style={{ fontSize: '0.9rem' }}>
                     ./linkedin
                 </a>
-                <a href={`${import.meta.env.BASE_URL}Resume.pdf?v=2`} target="_blank" rel="noopener noreferrer" className="btn-primary"
+                <a href={`${import.meta.env.BASE_URL}Meghapranay_Raparla_Resume.pdf`} target="_blank" rel="noopener noreferrer" className="btn-primary"
                     style={{ marginTop: '10px', fontSize: '0.75rem' }}>
                     resume
                 </a>

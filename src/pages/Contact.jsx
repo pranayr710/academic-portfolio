@@ -43,7 +43,7 @@ const Contact = () => {
                         aria-label="LinkedIn" style={{ color: 'var(--text-dim)' }}>
                         <i className="ri-linkedin-box-line"></i>
                     </a>
-                    <a href={`${import.meta.env.BASE_URL}Resume.pdf?v=2`} target="_blank" rel="noopener noreferrer"
+                    <a href={`${import.meta.env.BASE_URL}Meghapranay_Raparla_Resume.pdf`} target="_blank" rel="noopener noreferrer"
                         aria-label="Resume PDF" style={{ color: 'var(--text-dim)' }}>
                         <i className="ri-file-text-line"></i>
                     </a>
