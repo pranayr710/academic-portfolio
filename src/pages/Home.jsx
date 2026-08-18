@@ -218,7 +218,7 @@ const Home = () => {
                     </p>
                     <div className="hero-actions">
                         <Link to="/research" className="btn-solid">Read the research</Link>
-                        <a href={`${import.meta.env.BASE_URL}Resume.pdf`} target="_blank" rel="noopener noreferrer" className="btn-primary">Resume</a>
+                        <a href={`${import.meta.env.BASE_URL}Resume.pdf?v=2`} target="_blank" rel="noopener noreferrer" className="btn-primary">Resume</a>
                         <a href="https://www.linkedin.com/in/raparla-meghapranay-3820b2321/" target="_blank" rel="noopener noreferrer" className="btn-primary" aria-label="LinkedIn profile">
                             <i className="ri-linkedin-box-line" style={{ marginRight: '6px' }}></i>LinkedIn
                         </a>
