@@ -7,9 +7,9 @@ import DecodeText from '../components/DecodeText';
 const TERMINAL_LINES = [
     { type: 'cmd', text: 'provenance verify --subject "M. Raparla"' },
     { type: 'kv', key: 'c2pa_manifest', dots: 12, val: 'FOUND', ok: true },
-    { type: 'kv', key: 'deepfake_score', dots: 11, val: '0.02 — HUMAN', ok: true },
-    { type: 'kv', key: 'models_trained', dots: 11, val: 'CNN ensemble ×3', ok: false },
+    { type: 'kv', key: 'industry_exp', dots: 11, val: 'Nordic Tech Design', ok: true },
     { type: 'kv', key: 'adversarial_acc', dots: 10, val: '94.2%', ok: true },
+    { type: 'kv', key: 'defect_precision', dots: 8, val: '0 false alarms', ok: true },
     { type: 'kv', key: 'ships_real_systems', dots: 7, val: 'TRUE', ok: true },
     { type: 'verdict', text: '▌ VERDICT: AUTHENTIC — forward this profile' },
 ];
@@ -69,6 +69,16 @@ const VerificationTerminal = () => {
 const selectedWork = [
     {
         num: '01',
+        title: 'Nordic Tech Design — Software Engineer Intern',
+        problem:
+            'Industrial bolt inspection at a precision-engineering company. Built two production-grade systems using telecentric-camera machine vision: a dimensional metrology engine measuring thread pitch, diameters, and hole-to-edge distances at sub-pixel precision, and a golden-comparison surface-defect detector with image alignment to eliminate lighting false alarms.',
+        impact: '< 2 µm measurement repeatability · detected a pit the human operator missed',
+        tags: ['Python', 'OpenCV', 'Sub-pixel Metrology', 'Anomaly Detection', 'PatchCore'],
+        github: 'https://github.com/pranayr710',
+        caseStudy: '/projects',
+    },
+    {
+        num: '02',
         title: 'C2PA AI Detector',
         problem:
             'Deepfake detectors fail on novel generators; cryptographic provenance fails when metadata is stripped. I built a hybrid pipeline that checks C2PA signatures first, then falls back to a weighted ensemble of three CNNs (EfficientNet-B0, ResNet-50, frequency-domain) — trained on 10K+ real and synthetic videos.',
@@ -78,7 +88,7 @@ const selectedWork = [
         caseStudy: '/research',
     },
     {
-        num: '02',
+        num: '03',
         title: 'Strawberry Disease Detection',
         problem:
             'Field-condition plant pathology breaks lab-trained models. I annotated 5,000+ leaf images, fine-tuned YOLOv8 from COCO weights, and tuned NMS thresholds (IoU 0.45) to handle overlapping leaves under real outdoor lighting.',
@@ -88,7 +98,7 @@ const selectedWork = [
         caseStudy: '/research',
     },
     {
-        num: '03',
+        num: '04',
         title: 'AttendAI',
         problem:
             'Manual attendance wastes class time and invites proxy fraud. I built an end-to-end face-recognition pipeline — camera capture, recognition, database logging, CSV export — running at sub-second latency on commodity hardware.',
@@ -98,7 +108,7 @@ const selectedWork = [
         caseStudy: '/projects',
     },
     {
-        num: '04',
+        num: '05',
         title: 'GeoDroneAI',
         problem:
             'Naive shortest-path routing ignores no-fly zones and fleet conflicts. I implemented A* with weighted heuristics, dynamic obstacle re-planning, and multi-drone conflict resolution for simulated urban last-mile delivery.',
@@ -108,7 +118,7 @@ const selectedWork = [
         caseStudy: '/projects',
     },
     {
-        num: '05',
+        num: '06',
         title: 'IFDMS — Concurrent Focus Monitor',
         problem:
             'A single-threaded monitor can\'t handle concurrent I/O (WebSocket clients, OS polling, DB writes) without blocking. I built a layered concurrent architecture: asyncio event loop on a background thread manages the WebSocket server and multiple simultaneous clients, while a synchronous main loop runs the ML pipeline — with thread-safe shared state bridging both.',
@@ -162,6 +172,11 @@ const skillGroups = [
 /* ---------- Timeline ---------- */
 const timeline = [
     {
+        date: 'APR – JUN 2026',
+        title: 'Software Engineer Intern — Nordic Tech Design',
+        body: 'Built two industrial inspection systems for precision bolts: a sub-pixel dimensional metrology engine (< 2 µm repeatability) and a golden-comparison surface-defect detector — catching one pit the human operator missed.',
+    },
+    {
         date: '2025 — PRESENT',
         title: 'AI Security Research — Amrita Vishwa Vidyapeetham',
         body: 'Built a hybrid C2PA + CNN-ensemble media authentication system under faculty supervision. Reached 94.2% adversarial deepfake accuracy and cut GPU load by pre-filtering cryptographically verifiable media.',
@@ -179,7 +194,7 @@ const timeline = [
     {
         date: '2024 — PRESENT',
         title: 'B.Tech Computer Science — Amrita Vishwa Vidyapeetham',
-        body: 'Specializing in machine learning, computer vision, and distributed systems. Shipped 10+ projects spanning compilers, concurrent backends, ERP systems, and autonomous-systems simulation alongside coursework.',
+        body: 'Specializing in machine learning, computer vision, and distributed systems. Shipped 10+ projects spanning machine learning, concurrent backends, ERP systems, and autonomous-systems simulation alongside coursework.',
     },
 ];
 
@@ -189,7 +204,7 @@ const Home = () => {
             <section className="hero">
                 <div>
                     <p className="status-badge"><span className="pulse-dot" aria-hidden="true"></span>Open to SWE &amp; research internships — Summer 2027</p>
-                    <p className="kicker">AI Security · Computer Vision · Distributed Systems · Amrita University</p>
+                    <p className="kicker">AI Security · Computer Vision · Distributed Systems · Nordic Tech Design Alumni · Amrita University</p>
                     <h1 className="hero-name">
                         <DecodeText text="Meghapranay" /><br />
                         <DecodeText text="Raparla" delay={350} /><span className="accent-dot">.</span>

@@ -2,6 +2,10 @@ import Reveal from '../components/Reveal';
 
 const focusAreas = [
     {
+        title: "Industrial Machine Vision",
+        description: "Sub-pixel dimensional metrology and surface-defect detection for precision bolts (Nordic Tech Design internship). Telecentric-camera pipelines, golden-comparison alignment, and anomaly scoring at < 2 µm repeatability."
+    },
+    {
         title: "Hybrid AI + Cryptographic Security",
         description: "Verification pipelines combining provenance-based trust (C2PA) with probabilistic AI classification for media authentication."
     },
@@ -24,6 +28,8 @@ const focusAreas = [
 ];
 
 const explorations = [
+    "Validated a sub-pixel metrology engine to < 2 µm repeatability across 40 repeated measurements — thread pitch, major/minor diameter, hole-to-edge distance on industrial bolts (Nordic Tech Design).",
+    "Designed golden-comparison surface-defect detector with orientation alignment; eliminated lighting-induced false alarms on forged bolt surfaces — 0 false positives.",
     "Studied frequency-domain artifacts in GAN-generated images using FFT spectral analysis to identify periodic signatures invisible in the spatial domain.",
     "Analyzed annotation noise impact on object detection — measured mAP degradation as a function of bounding box jitter in training labels.",
     "Tested ensemble robustness against FGSM and PGD adversarial attacks — observed a 12% accuracy drop under L∞ perturbation budget ε=0.03.",

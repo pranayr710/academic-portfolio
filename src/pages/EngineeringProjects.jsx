@@ -2,6 +2,20 @@ import Reveal from '../components/Reveal';
 
 const featuredProjects = [
     {
+        title: "Nordic Tech Design Internship — Software Engineering",
+        description: "Two working inspection systems for precision bolts during a 3-month internship. First: a sub-pixel dimensional metrology engine that measures thread pitch, major/minor diameter, and hole-to-edge distances using telecentric-camera imagery. Second: a golden-comparison surface-defect detector that aligns images to eliminate lighting false alarms and flags surface pits.",
+        impact: "< 2 µm measurement repeatability · caught a pit the human operator missed",
+        tags: ["Python", "OpenCV", "Sub-pixel Metrology", "Anomaly Detection", "PatchCore", "EfficientAD"],
+        link: "https://github.com/pranayr710",
+        highlights: [
+            "Sub-pixel thread pitch measurement by fitting lines through many teeth",
+            "Validated to < 2 µm repeatability across 40 repeated runs",
+            "Golden-comparison defect detector with orientation alignment — 0 false positives",
+            "Automated hole counter from rotating-bolt video with deduplication logic",
+            "Studied PatchCore and EfficientAD on MVTec AD benchmark"
+        ]
+    },
+    {
         title: "IFDMS — Concurrent Focus Monitoring System",
         description: "A single-threaded monitor can't handle concurrent I/O without blocking. IFDMS uses a layered concurrent architecture: an asyncio event loop runs on a dedicated background thread managing a WebSocket server with multiple simultaneous clients (Chrome extension + desktop HUD), while a synchronous main loop runs the ML pipeline — with thread-safe shared state bridging both layers.",
         impact: "Concurrent asyncio + threading architecture · real-time multi-client WebSocket broadcast",
@@ -61,7 +75,7 @@ const otherProjects = [
         title: "MicroJava AST Interpreter",
         description: "Complete interpreter for the MicroJava language: AST generation, SVG visualization, step-by-step debugger with breakpoints, and symbol table management with memory simulation.",
         impact: "Full pipeline: Lexer → Parser → AST → Interpreter → Debugger",
-        tags: ["Java", "JavaFX", "Compilers", "AST"],
+        tags: ["Java", "JavaFX", "Language Processing", "AST"],
         link: "https://github.com/pranayr710/microjava-interpreter"
     },
     {
@@ -100,7 +114,7 @@ const EngineeringProjects = () => {
         <div className="container page">
             <h2 className="section-title" data-num="02.">Engineering Projects</h2>
             <p className="section-subtitle">
-                Systems engineering beyond the research lab — backends, simulators, compilers, and tooling.
+                Systems engineering beyond the research lab — backends, simulators, and tooling.
             </p>
 
             {featuredProjects.map((project, index) => (

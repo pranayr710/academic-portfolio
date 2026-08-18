@@ -34,7 +34,7 @@ function AnimatedRoutes() {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/academic-portfolio">
       <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <div className="aurora" aria-hidden="true"></div>
         <div className="bg-grid" aria-hidden="true"></div>
