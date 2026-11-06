@@ -1,342 +1,260 @@
-import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Reveal from '../components/Reveal';
-import DecodeText from '../components/DecodeText';
+import profile from '../assets/profile.jpg';
+import HeroScrub from '../components/HeroScrub';
+import ChessPuzzle from '../components/ChessPuzzle';
+import OverflowDemo from '../components/OverflowDemo';
+import MorseWriter from '../components/MorseWriter';
 
-/* ---------- Signature element: provenance verification terminal ---------- */
-const TERMINAL_LINES = [
-    { type: 'cmd', text: 'provenance verify --subject "M. Raparla"' },
-    { type: 'kv', key: 'c2pa_manifest', dots: 12, val: 'FOUND', ok: true },
-    { type: 'kv', key: 'industry_exp', dots: 11, val: 'Nordic Tech Design', ok: true },
-    { type: 'kv', key: 'adversarial_acc', dots: 10, val: '94.2%', ok: true },
-    { type: 'kv', key: 'defect_precision', dots: 8, val: '0 false alarms', ok: true },
-    { type: 'kv', key: 'ships_real_systems', dots: 7, val: 'TRUE', ok: true },
-    { type: 'verdict', text: '▌ VERDICT: AUTHENTIC — forward this profile' },
-];
+const BASE = import.meta.env.BASE_URL;
+const LINKEDIN = 'https://www.linkedin.com/in/raparla-meghapranay-3820b2321/';
+const GITHUB = 'https://github.com/pranayr710';
+const MERGED_PRS = 'https://github.com/search?q=author%3Apranayr710+is%3Apr+is%3Amerged&type=pullrequests';
+const RESUME = `${BASE}Meghapranay_Raparla_Resume.pdf`;
+const ARM_FRAMES = 120;
+const armFrame = (i) => `${BASE}arm/${String(i + 1).padStart(4, '0')}.webp`;
 
-const prefersReducedMotion = () =>
-    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-const VerificationTerminal = () => {
-    const [count, setCount] = useState(() => (prefersReducedMotion() ? TERMINAL_LINES.length : 0));
-    const done = count >= TERMINAL_LINES.length;
-    const timer = useRef(null);
-
-    useEffect(() => {
-        if (prefersReducedMotion()) return;
-        timer.current = setInterval(() => {
-            setCount((c) => {
-                if (c >= TERMINAL_LINES.length) {
-                    clearInterval(timer.current);
-                    return c;
-                }
-                return c + 1;
-            });
-        }, 420);
-        return () => clearInterval(timer.current);
-    }, []);
-
-    return (
-        <div className="terminal" role="img" aria-label="Terminal verifying authenticity: verdict authentic, forward this profile">
-            <div className="terminal-bar" aria-hidden="true">
-                <span className="dot"></span>
-                <span className="dot"></span>
-                <span className="dot"></span>
-                <span className="terminal-title">authenticity_check.sh</span>
-            </div>
-            <div className="terminal-body" aria-hidden="true">
-                {TERMINAL_LINES.slice(0, count).map((line, i) => {
-                    if (line.type === 'cmd') {
-                        return <div key={i} className="t-line t-cmd">{line.text}</div>;
-                    }
-                    if (line.type === 'verdict') {
-                        return <div key={i} className="t-line t-verdict">{line.text}</div>;
-                    }
-                    return (
-                        <div key={i} className="t-line">
-                            <span className="t-key">{'> '}{line.key} {'.'.repeat(line.dots)} </span>
-                            <span className={line.ok ? 't-ok' : 't-val'}>{line.val}</span>
-                        </div>
-                    );
-                })}
-                {!done && <span className="cursor-block"></span>}
-            </div>
-        </div>
-    );
-};
-
-/* ---------- Selected work data (flagships only) ---------- */
-const selectedWork = [
+const work = [
     {
-        num: '01',
-        title: 'Nordic Tech Design — Software Engineer Intern',
-        problem:
-            'Industrial bolt inspection at a precision-engineering company. Built two production-grade systems using telecentric-camera machine vision: a dimensional metrology engine measuring thread pitch, diameters, and hole-to-edge distances at sub-pixel precision, and a golden-comparison surface-defect detector with image alignment to eliminate lighting false alarms.',
-        impact: '< 2 µm measurement repeatability · detected a pit the human operator missed',
-        tags: ['Python', 'OpenCV', 'Sub-pixel Metrology', 'Anomaly Detection', 'PatchCore'],
-        github: 'https://github.com/pranayr710',
-        caseStudy: '/projects',
+        title: 'Fixes merged into OpenCV and CCExtractor',
+        body: 'In OpenCV\'s core I fixed functions like cv::sum() and convertTo() that quietly returned wrong numbers on large values. In CCExtractor, memory bugs in its video parser. Every fix came with a test that failed before the change.',
+        meta: 'C and C++ · 9 merged in OpenCV, 7 in CCExtractor · since September 2026',
+        href: MERGED_PRS,
+        link: 'See the merged pull requests',
+        img: 'work/opencv-pr.webp',
+        alt: 'A merged OpenCV pull request: core: stop cv::sum() wrapping at 32 bits',
     },
     {
-        num: '02',
-        title: 'C2PA AI Detector',
-        problem:
-            'Deepfake detectors fail on novel generators; cryptographic provenance fails when metadata is stripped. I built a hybrid pipeline that checks C2PA signatures first, then falls back to a weighted ensemble of three CNNs (EfficientNet-B0, ResNet-50, frequency-domain) — trained on 10K+ real and synthetic videos.',
-        impact: '94.2% accuracy on adversarial deepfakes · skips GPU inference for ~40–60% of verifiable inputs',
-        tags: ['PyTorch', 'C2PA', 'EfficientNet', 'ResNet-50', 'FFT analysis'],
-        github: 'https://github.com/pranayr710/c2pa-ai-detector',
-        caseStudy: '/research',
+        title: 'Lumina, a canvas for automation',
+        body: 'Drag in a camera or a microphone, let detection and language models work on it, and send the result to email, Slack or a Google Sheet. Or describe the workflow in one sentence and it builds the graph for you.',
+        meta: 'TypeScript, Next.js, FastAPI, ONNX Runtime · 33 node types · exports to Node-RED',
+        href: 'https://github.com/pranayr710/lumina',
+        link: 'Read the code',
+        img: 'work/lumina-dashboard.webp',
+        alt: 'Lumina dashboard with live detection counts',
     },
     {
-        num: '03',
-        title: 'Strawberry Disease Detection',
-        problem:
-            'Field-condition plant pathology breaks lab-trained models. I annotated 5,000+ leaf images, fine-tuned YOLOv8 from COCO weights, and tuned NMS thresholds (IoU 0.45) to handle overlapping leaves under real outdoor lighting.',
-        impact: '91.7% mAP@0.5 on leaf blight and powdery mildew',
-        tags: ['YOLOv8', 'Transfer Learning', 'Data Annotation', 'Python'],
-        github: 'https://github.com/pranayr710/AI-Based-Strawberry-Disease-Detection-and-Validation-Framework',
-        caseStudy: '/research',
+        title: 'A robot arm that writes',
+        body: 'Four wooden joints on an STM32, programmed in C at register level: a 1 kHz control loop, servo PWM and an ultrasonic emergency stop. It picks things up, writes on paper, and can spell out a message from eye blinks.',
+        meta: 'Embedded C on STM32 · Python and MediaPipe on the host',
+        href: 'https://github.com/pranayr710/robo_arm',
+        link: 'Read the firmware',
+        img: 'work/robo-arm.webp',
+        alt: 'The wooden STM32 robot arm on a workbench, gripping a block',
+        cls: 'center',
     },
     {
-        num: '04',
-        title: 'AttendAI',
-        problem:
-            'Manual attendance wastes class time and invites proxy fraud. I built an end-to-end face-recognition pipeline — camera capture, recognition, database logging, CSV export — running at sub-second latency on commodity hardware.',
-        impact: '96.4% recognition accuracy · sub-second per-face inference',
-        tags: ['OpenCV', 'Python', 'SQLite', 'Flask'],
-        github: 'https://github.com/pranayr710/AttendAI-Smart-Face-Recognition-Attendance-System',
-        caseStudy: '/projects',
+        title: 'ClassGraph, attention from one camera',
+        body: 'One fixed classroom camera in; for every student, who they are, whether they are writing, reading or on their phone, and an attention score, shown live on a dashboard with a report after each session.',
+        meta: 'Python, PyTorch, YOLO11, FastAPI · 743 automated tests',
+        href: 'https://github.com/pranayr710/cv',
+        link: 'Read the code',
+        img: 'work/classgraph-architecture.webp',
+        alt: 'ClassGraph architecture from detection to per-student reports',
+        cls: 'diagram',
     },
     {
-        num: '05',
-        title: 'GeoDroneAI',
-        problem:
-            'Naive shortest-path routing ignores no-fly zones and fleet conflicts. I implemented A* with weighted heuristics, dynamic obstacle re-planning, and multi-drone conflict resolution for simulated urban last-mile delivery.',
-        impact: '34% faster deliveries vs. naive routing in simulation',
-        tags: ['A* Search', 'Geospatial', 'Multi-agent', 'Python'],
-        github: 'https://github.com/pranayr710/GeoDroneAI-Autonomous-Drone-Delivery-Simulator-with-AI-Optimization',
-        caseStudy: '/projects',
-    },
-    {
-        num: '06',
-        title: 'IFDMS — Concurrent Focus Monitor',
-        problem:
-            'A single-threaded monitor can\'t handle concurrent I/O (WebSocket clients, OS polling, DB writes) without blocking. I built a layered concurrent architecture: asyncio event loop on a background thread manages the WebSocket server and multiple simultaneous clients, while a synchronous main loop runs the ML pipeline — with thread-safe shared state bridging both.',
-        impact: 'Concurrent asyncio + threading · real-time multi-client broadcast · 10+ coordinated modules',
-        tags: ['Python', 'asyncio', 'WebSockets', 'Concurrent Systems', 'Flask'],
-        github: 'https://github.com/pranayr710',
-        caseStudy: '/projects',
+        title: 'PatentIQ, an AI patent assistant',
+        body: 'An LLM interviews the inventor like a patent officer, searches 11 patent and research sources in parallel, finds the closest prior art for each claim in a vector database, and writes the report. It runs on a local model, with Gemini as the fallback.',
+        meta: 'Python, FastAPI, Next.js, ChromaDB · built with a teammate',
+        href: null,
+        link: 'Code is private for now',
+        img: 'work/patentiq.webp',
+        alt: 'PatentIQ landing page with the AI interviewing an inventor',
     },
 ];
 
-/* ---------- Skills ---------- */
-const skillGroups = [
+const experience = [
     {
-        title: 'ML & Computer Vision',
-        items: [
-            ['PyTorch / TensorFlow', 'daily'],
-            ['CNNs · YOLO · ensembles', 'deep'],
-            ['OpenCV · dlib', 'deep'],
-            ['Adversarial robustness', 'research'],
-        ],
+        date: 'Apr – Jun 2026',
+        title: 'Software Engineer Intern, Nordic Tech Design, Gurgaon',
+        body: 'The only developer on the inspection software in a team of five. Measured thread pitch and diameters to within two microns across 40 runs, and the defect checker caught a pit the operator had missed.',
+        figure: '< 2 µm',
     },
     {
-        title: 'Languages',
-        items: [
-            ['Python', 'primary'],
-            ['Java', 'strong'],
-            ['JavaScript', 'strong'],
-            ['SQL', 'strong'],
-        ],
+        date: 'Sep 2026 – now',
+        title: 'Open-source contributor, OpenCV and CCExtractor',
+        body: 'Nine fixes merged into OpenCV\'s core module and seven into CCExtractor, each reviewed by the project\'s maintainers.',
+        figure: '16',
     },
     {
-        title: 'Systems & Backend',
-        items: [
-            ['asyncio · WebSockets · threading', 'shipped'],
-            ['Spring Boot · JWT auth', 'shipped'],
-            ['REST API design', 'shipped'],
-            ['MySQL · SQLite', 'shipped'],
-        ],
+        date: '2025 – now',
+        title: 'Undergraduate researcher, Amrita Vishwa Vidyapeetham',
+        body: 'AI security under faculty supervision: media authentication that combines C2PA signatures with a CNN ensemble.',
+        figure: '94.2%',
     },
     {
-        title: 'Methods',
-        items: [
-            ['Concurrent / async systems', 'applied'],
-            ['Frequency-domain analysis', 'research'],
-            ['Transfer learning', 'applied'],
-            ['A* / heuristic search', 'applied'],
-        ],
+        date: '2024 – 2028',
+        title: 'B.Tech in Computer Science and Engineering, Amrita Vishwa Vidyapeetham, Coimbatore',
+        body: 'Data structures, operating systems, computer networks, DBMS and machine learning.',
+        figure: '8.34',
     },
 ];
 
-/* ---------- Timeline ---------- */
-const timeline = [
-    {
-        date: 'APR – JUN 2026',
-        title: 'Software Engineer Intern — Nordic Tech Design',
-        body: 'Built two industrial inspection systems for precision bolts: a sub-pixel dimensional metrology engine (< 2 µm repeatability) and a golden-comparison surface-defect detector — catching one pit the human operator missed.',
-    },
-    {
-        date: '2025 — PRESENT',
-        title: 'AI Security Research — Amrita Vishwa Vidyapeetham',
-        body: 'Built a hybrid C2PA + CNN-ensemble media authentication system under faculty supervision. Reached 94.2% adversarial deepfake accuracy and cut GPU load by pre-filtering cryptographically verifiable media.',
-    },
-    {
-        date: '2025 — PRESENT',
-        title: 'Applied CV — Agricultural Pathology',
-        body: 'Curated and annotated a 5,000+ image dataset; fine-tuned YOLOv8 to 91.7% mAP@0.5 for in-field strawberry disease detection.',
-    },
-    {
-        date: '2025 — PRESENT',
-        title: 'Concurrent Systems — IFDMS Focus Monitor',
-        body: 'Designed and built a multi-threaded monitoring system: asyncio WebSocket server on a background thread, thread-safe shared state, real-time broadcast to multiple simultaneous clients, and a 10+ module coordinated pipeline.',
-    },
-    {
-        date: '2024 — PRESENT',
-        title: 'B.Tech Computer Science — Amrita Vishwa Vidyapeetham',
-        body: 'Specializing in machine learning, computer vision, and distributed systems. Shipped 10+ projects spanning machine learning, concurrent backends, ERP systems, and autonomous-systems simulation alongside coursework.',
-    },
+const skills = [
+    ['Languages', ['Python', 'Java', 'C', 'SQL', 'TypeScript']],
+    ['Vision and AI', ['OpenCV', 'PyTorch', 'YOLO', 'LLM APIs and RAG']],
+    ['Backend and systems', ['FastAPI', 'Spring Boot and MySQL', 'asyncio and WebSockets', 'Embedded C on STM32']],
+    ['Tools', ['Git and GitHub', 'Linux', 'Docker', 'Power BI', 'Node-RED']],
 ];
 
-const Home = () => {
-    return (
+/* A work row links out when there is public code; otherwise it is a plain block. */
+const Row = ({ href, children }) => (href
+    ? <a className="w-row" href={href} target="_blank" rel="noopener noreferrer">{children}</a>
+    : <div className="w-row">{children}</div>);
+
+const Home = () => (
+    <>
+        {/* ---------- First screen: who, what, one hard fact ---------- */}
         <div className="container">
-            <section className="hero">
+            <section className="h-hero" aria-labelledby="hero-title">
                 <div>
-                    <p className="status-badge"><span className="pulse-dot" aria-hidden="true"></span>Open to SWE &amp; research internships — Summer 2027</p>
-                    <p className="kicker">AI Security · Computer Vision · Distributed Systems · Nordic Tech Design Alumni · Amrita University</p>
-                    <h1 className="hero-name">
-                        <DecodeText text="Meghapranay" /><br />
-                        <DecodeText text="Raparla" delay={350} /><span className="accent-dot">.</span>
-                    </h1>
-                    <p className="hero-position">
-                        I build systems that decide whether what you're seeing is <strong>real</strong> —
-                        hybrid cryptographic + deep-learning pipelines for media authentication.
+                    <p className="h-eyebrow">Meghapranay Raparla · Computer science, Amrita University</p>
+                    <h1 id="hero-title">I build software that has to work in the <em>real world</em>.</h1>
+                    <p className="h-intro">
+                        I&apos;m a third-year student in Coimbatore. I like problems you can measure: a bolt
+                        measured to two microns, an OpenCV bug proven with a failing test, a robot arm that
+                        writes what you blink.
                     </p>
-                    <p className="hero-cred">
-                        94.2% adversarial deepfake detection · CNN ensemble · 10K+ sample training set
-                    </p>
-                    <div className="hero-actions">
-                        <Link to="/research" className="btn-solid">Read the research</Link>
-                        <a href={`${import.meta.env.BASE_URL}Meghapranay_Raparla_Resume.pdf`} target="_blank" rel="noopener noreferrer" className="btn-primary">Resume</a>
-                        <a href="https://www.linkedin.com/in/raparla-meghapranay-3820b2321/" target="_blank" rel="noopener noreferrer" className="btn-primary" aria-label="LinkedIn profile">
-                            <i className="ri-linkedin-box-line" style={{ marginRight: '6px' }}></i>LinkedIn
-                        </a>
+                    <ul className="h-facts">
+                        <li><b>16</b>fixes merged into OpenCV and CCExtractor</li>
+                        <li><b>&lt; 2 µm</b>inspection software, Nordic Tech Design</li>
+                    </ul>
+                    <div className="h-actions">
+                        <a href="#work" className="btn-solid">See my work <i className="ri-arrow-down-line" aria-hidden="true"></i></a>
+                        <a href={RESUME} target="_blank" rel="noopener noreferrer" className="btn-primary">Download resume</a>
                     </div>
                 </div>
-
-                <VerificationTerminal />
-            </section>
-
-            <section style={{ paddingBottom: '30px' }} aria-labelledby="work-title">
-                <Reveal>
-                    <h2 className="section-title" id="work-title" data-num="01.">Selected Work</h2>
-                    <p className="section-subtitle">
-                        Four systems, each with a measurable result. Deep technical write-ups live on the
-                        research and projects pages.
-                    </p>
-                </Reveal>
-
-                {selectedWork.map((w, i) => (
-                    <Reveal key={w.num} className="work-row" delay={i * 60}>
-                        <span className="work-num">{w.num}</span>
-                        <div>
-                            <h3 className="work-title">
-                                <Link to={w.caseStudy} className="work-title-link">{w.title}</Link>
-                            </h3>
-                            <p className="work-problem">{w.problem}</p>
-                            <p className="work-impact">
-                                <i className="ri-flashlight-line" aria-hidden="true"></i>
-                                {w.impact}
-                            </p>
-                            <div className="tag-list">
-                                {w.tags.map((t) => <span key={t} className="tag-pill">{t}</span>)}
-                            </div>
-                        </div>
-                        <div className="work-links">
-                            <Link to={w.caseStudy} aria-label={`${w.title} case study`} title="Case study">
-                                <i className="ri-article-line"></i>
-                            </Link>
-                            <a href={w.github} target="_blank" rel="noopener noreferrer"
-                                aria-label={`${w.title} on GitHub`} title="GitHub">
-                                <i className="ri-github-line"></i>
-                            </a>
-                        </div>
-                    </Reveal>
-                ))}
-            </section>
-
-            <section aria-labelledby="skills-title">
-                <Reveal>
-                    <div className="divider-label" id="skills-title">02 · Technical Skills</div>
-                </Reveal>
-                <div className="skills-grid">
-                    {skillGroups.map((g, i) => (
-                        <Reveal key={g.title} className="skill-group" delay={i * 70}>
-                            <h4>{g.title}</h4>
-                            <ul>
-                                {g.items.map(([name, lvl]) => (
-                                    <li key={name}>
-                                        <span>{name}</span>
-                                        <span className="lvl">{lvl}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </Reveal>
-                    ))}
-                </div>
-            </section>
-
-            <section aria-labelledby="timeline-title">
-                <Reveal>
-                    <div className="divider-label" id="timeline-title">03 · Experience &amp; Education</div>
-                </Reveal>
-                <div className="timeline">
-                    {timeline.map((t, i) => (
-                        <Reveal key={t.title} className="timeline-item" delay={i * 80}>
-                            <p className="timeline-date">{t.date}</p>
-                            <h4>{t.title}</h4>
-                            <p>{t.body}</p>
-                        </Reveal>
-                    ))}
-                </div>
-            </section>
-
-            <section style={{ padding: '90px 0 60px', textAlign: 'center' }} aria-labelledby="cta-title">
-                <Reveal>
-                    <p className="kicker">04 · About</p>
-                    <h2 id="cta-title" style={{
-                        fontSize: 'clamp(1.5rem, 4vw, 2.2rem)',
-                        color: 'var(--text-bright)',
-                        letterSpacing: '-0.02em',
-                        maxWidth: '680px',
-                        margin: '0 auto 18px',
-                        lineHeight: 1.3,
-                    }}>
-                        Research, systems, and the gap between them.
-                    </h2>
-                    <p style={{
-                        color: 'var(--text-dim)',
-                        fontSize: '0.95rem',
-                        maxWidth: '560px',
-                        margin: '0 auto 34px',
-                        lineHeight: 1.75,
-                    }}>
-                        Third-year CS undergraduate at Amrita University. I work on AI security and media
-                        forensics under faculty supervision, and build concurrent systems and production
-                        backends alongside coursework. Currently seeking SWE and research internships for
-                        Summer 2027 — I collaborate well and take feedback seriously.
-                    </p>
-                    <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-                        <a href="mailto:pranayraparla3@gmail.com" className="btn-solid">
-                            pranayraparla3@gmail.com
-                        </a>
-                        <Link to="/contact" className="btn-primary">Contact page</Link>
-                    </div>
-                </Reveal>
+                <figure className="h-portrait">
+                    <img src={profile} alt="Meghapranay Raparla" />
+                </figure>
             </section>
         </div>
-    );
-};
+
+        {/* ---------- The one moment: real footage of the robot arm, scrubbed by scroll ---------- */}
+        <HeroScrub
+            frameCount={ARM_FRAMES}
+            frameUrl={armFrame}
+            poster={`${BASE}work/robo-arm.webp`}
+            posterAlt="Footage of the STM32 robot arm picking up a block and writing on paper"
+            titleTop="Hand-built"
+            titleBottom="robot arm."
+        />
+
+        <div className="container">
+            {/* ---------- Work ---------- */}
+            <section className="h-sec" id="work" aria-labelledby="work-title">
+                <h2 id="work-title">Selected work</h2>
+                <div className="w-list">
+                    {work.map((w, i) => (
+                        <Row key={w.title} href={w.href}>
+                            <div>
+                                <span className="w-num">{String(i + 1).padStart(2, '0')}</span>
+                                <h3>{w.title}</h3>
+                                <p>{w.body}</p>
+                                <p className="w-meta">{w.meta}</p>
+                                <span className={`w-link${w.href ? '' : ' muted'}`}>
+                                    {w.link} {w.href && <i className="ri-arrow-right-up-line" aria-hidden="true"></i>}
+                                </span>
+                            </div>
+                            <span className={`w-pic ${w.cls || ''}`}>
+                                <img src={`${BASE}${w.img}`} alt={w.alt} loading="lazy" />
+                            </span>
+                        </Row>
+                    ))}
+                </div>
+            </section>
+
+            {/* ---------- Two things to try ---------- */}
+            <section className="h-sec" aria-labelledby="try-title">
+                <h2 id="try-title">Two things to try</h2>
+                <div className="t-grid">
+                    <OverflowDemo />
+                    <MorseWriter />
+                </div>
+            </section>
+
+            {/* ---------- How I work ---------- */}
+            <section className="h-sec" aria-labelledby="story-title">
+                <p className="h-eyebrow" id="story-title">How I work</p>
+                <div className="s-grid">
+                    <p className="s-quote">My first six pull requests to OpenCV were all <em>closed</em>.</p>
+                    <div className="s-body">
+                        <p>
+                            I was fixing things other people had already fixed, from a copy of the code that
+                            was months out of date. So I changed how I work, and since September sixteen of my
+                            fixes have been merged.
+                        </p>
+                        <ol className="s-steps">
+                            <li>Start from the latest code, and check nobody is already on it.</li>
+                            <li>Prove the bug with a test that fails before touching anything.</li>
+                            <li>Fix it, then show the unrelated failures were already there.</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            {/* ---------- Experience ---------- */}
+            <section className="h-sec" aria-labelledby="exp-title">
+                <h2 id="exp-title">Experience and education</h2>
+                <div className="e-list">
+                    {experience.map((e) => (
+                        <div key={e.title} className="e-item">
+                            <span className="e-date">{e.date}</span>
+                            <div>
+                                <h3>{e.title}</h3>
+                                <p>{e.body}</p>
+                            </div>
+                            <span className="e-figure">{e.figure}</span>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* ---------- Skills ---------- */}
+            <section className="h-sec" aria-labelledby="skills-title">
+                <h2 id="skills-title">Tools I use</h2>
+                <div className="k-grid">
+                    {skills.map(([group, items]) => (
+                        <div key={group}>
+                            <h3>{group}</h3>
+                            <ul>{items.map((s) => <li key={s}>{s}</li>)}</ul>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* ---------- Off the keyboard ---------- */}
+            <section className="h-sec" aria-labelledby="off-title">
+                <p className="h-eyebrow" id="off-title">Off the keyboard</p>
+                <div className="o-grid">
+                    <div>
+                        <p className="o-big">6<sup>th</sup></p>
+                        <p className="o-caption">
+                            at the Under-11 National Chess Championship in 2016. I still play, at a rating of 1406.
+                        </p>
+                        <ul className="o-list" style={{ marginTop: '28px' }}>
+                            <li><b>Vice-Captain</b>, Chess Club, Amrita</li>
+                            <li><b>Captain</b>, CSE chess team</li>
+                            <li><b>Google Student Ambassador</b>, Amrita</li>
+                            <li><b>Member</b>, Amrita Center for Entrepreneurship</li>
+                        </ul>
+                    </div>
+                    <ChessPuzzle />
+                </div>
+            </section>
+
+            {/* ---------- Contact ---------- */}
+            <section className="h-sec" aria-labelledby="contact-title" style={{ paddingBottom: 'clamp(90px, 14vh, 150px)' }}>
+                <h2 id="contact-title">Say hello</h2>
+                <p className="h-intro" style={{ marginTop: '18px' }}>I&apos;m looking for a software or research internship for summer 2027.</p>
+                <a className="c-mail" href="mailto:pranayraparla3@gmail.com">pranayraparla3@gmail.com</a>
+                <div className="c-links">
+                    <a className="btn-primary" href={GITHUB} target="_blank" rel="noopener noreferrer"><i className="ri-github-fill" aria-hidden="true"></i>GitHub</a>
+                    <a className="btn-primary" href={LINKEDIN} target="_blank" rel="noopener noreferrer"><i className="ri-linkedin-box-fill" aria-hidden="true"></i>LinkedIn</a>
+                    <a className="btn-primary" href={RESUME} target="_blank" rel="noopener noreferrer"><i className="ri-file-text-line" aria-hidden="true"></i>Resume</a>
+                </div>
+            </section>
+        </div>
+    </>
+);
 
 export default Home;

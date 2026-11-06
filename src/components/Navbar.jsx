@@ -3,11 +3,11 @@ import { useState, useEffect } from 'react';
 import 'remixicon/fonts/remixicon.css';
 
 const navItems = [
-    { to: '/', label: 'home' },
-    { to: '/research', label: 'research' },
-    { to: '/projects', label: 'projects' },
-    { to: '/focus', label: 'focus' },
-    { to: '/contact', label: 'contact' },
+    { to: '/', label: 'Home' },
+    { to: '/research', label: 'Research' },
+    { to: '/projects', label: 'Projects' },
+    { to: '/focus', label: 'Focus' },
+    { to: '/contact', label: 'Contact' },
 ];
 
 const Navbar = () => {
@@ -25,7 +25,7 @@ const Navbar = () => {
     return (
         <nav className={`site-nav ${scrolled ? 'scrolled' : ''}`} aria-label="Main navigation">
             <NavLink to="/" onClick={closeMenu} className="nav-logo">
-                <span className="bracket">[</span>mr<span className="bracket">]</span>
+                Meghapranay Raparla
             </NavLink>
 
             <ul className="desktop-menu">
@@ -37,7 +37,7 @@ const Navbar = () => {
                             onClick={closeMenu}
                             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                         >
-                            ./{item.label}
+                            {item.label}
                         </NavLink>
                     </li>
                 ))}
@@ -50,7 +50,7 @@ const Navbar = () => {
                 <li>
                     <a href={`${import.meta.env.BASE_URL}Meghapranay_Raparla_Resume.pdf`} target="_blank" rel="noopener noreferrer" className="btn-primary"
                         style={{ padding: '7px 16px', fontSize: '0.72rem' }}>
-                        resume
+                        Resume
                     </a>
                 </li>
             </ul>
@@ -75,16 +75,16 @@ const Navbar = () => {
                         className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                         style={{ fontSize: '0.9rem' }}
                     >
-                        ./{item.label}
+                        {item.label}
                     </NavLink>
                 ))}
                 <a href="https://www.linkedin.com/in/raparla-meghapranay-3820b2321/" target="_blank" rel="noopener noreferrer"
                     className="nav-link" style={{ fontSize: '0.9rem' }}>
-                    ./linkedin
+                    LinkedIn
                 </a>
                 <a href={`${import.meta.env.BASE_URL}Meghapranay_Raparla_Resume.pdf`} target="_blank" rel="noopener noreferrer" className="btn-primary"
                     style={{ marginTop: '10px', fontSize: '0.75rem' }}>
-                    resume
+                    Resume
                 </a>
             </aside>
         </nav>

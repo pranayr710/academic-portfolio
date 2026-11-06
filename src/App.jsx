@@ -6,7 +6,6 @@ import Research from './pages/Research';
 import EngineeringProjects from './pages/EngineeringProjects';
 import TechnicalFocus from './pages/TechnicalFocus';
 import Contact from './pages/Contact';
-import Effects from './components/Effects';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -36,10 +35,6 @@ function App() {
   return (
     <Router basename="/academic-portfolio">
       <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-        <div className="aurora" aria-hidden="true"></div>
-        <div className="bg-grid" aria-hidden="true"></div>
-        <Effects />
-
         <a href="#main" className="skip-link">Skip to content</a>
         <Navbar />
         <ScrollToTop />
@@ -57,7 +52,7 @@ function App() {
               <i className="ri-mail-line"></i>
             </a>
           </div>
-          <p>verified_human=true · designed &amp; built by Meghapranay Raparla</p>
+          <p>© 2026 Meghapranay Raparla · designed &amp; built by me</p>
         </footer>
       </div>
     </Router>
