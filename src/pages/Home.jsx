@@ -107,7 +107,7 @@ const Home = () => (
         <div className="container">
             <section className="h-hero" aria-labelledby="hero-title">
                 <div>
-                    <p className="h-eyebrow">Meghapranay Raparla · Computer science, Amrita University</p>
+                    <p className="h-eyebrow">Megha Pranay Raparla · Computer science, Amrita University</p>
                     <h1 id="hero-title">I build software that has to work in the <em>real world</em>.</h1>
                     <p className="h-intro">
                         I&apos;m a third-year student in Coimbatore. I like problems you can measure: a bolt
@@ -124,7 +124,7 @@ const Home = () => (
                     </div>
                 </div>
                 <figure className="h-portrait">
-                    <img src={profile} alt="Meghapranay Raparla" />
+                    <img src={profile} alt="Megha Pranay Raparla" />
                 </figure>
             </section>
         </div>

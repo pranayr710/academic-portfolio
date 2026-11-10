@@ -25,7 +25,7 @@ const Navbar = () => {
     return (
         <nav className={`site-nav ${scrolled ? 'scrolled' : ''}`} aria-label="Main navigation">
             <NavLink to="/" onClick={closeMenu} className="nav-logo">
-                Meghapranay Raparla
+                Megha Pranay Raparla
             </NavLink>
 
             <ul className="desktop-menu">

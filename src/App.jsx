@@ -52,7 +52,7 @@ function App() {
               <i className="ri-mail-line"></i>
             </a>
           </div>
-          <p>© 2026 Meghapranay Raparla · designed &amp; built by me</p>
+          <p>© 2026 Megha Pranay Raparla · designed &amp; built by me</p>
         </footer>
       </div>
     </Router>
