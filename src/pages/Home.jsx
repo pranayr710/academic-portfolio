@@ -16,7 +16,7 @@ const work = [
     {
         title: 'Fixes merged into OpenCV and CCExtractor',
         body: 'In OpenCV\'s core I fixed functions like cv::sum() and convertTo() that quietly returned wrong numbers on large values. In CCExtractor, memory bugs in its video parser. Every fix came with a test that failed before the change.',
-        meta: 'C and C++ · 9 merged in OpenCV, 7 in CCExtractor · since September 2026',
+        meta: 'C and C++ · 11 merged in OpenCV, 8 in CCExtractor · since September 2026',
         href: MERGED_PRS,
         link: 'See the merged pull requests',
         img: 'work/opencv-pr.webp',
@@ -72,8 +72,8 @@ const experience = [
     {
         date: 'Sep 2026 – now',
         title: 'Open-source contributor, OpenCV and CCExtractor',
-        body: 'Nine fixes merged into OpenCV\'s core module and seven into CCExtractor, each reviewed by the project\'s maintainers.',
-        figure: '16',
+        body: 'Eleven fixes merged into OpenCV\'s core module and eight into CCExtractor, each reviewed by the project\'s maintainers.',
+        figure: '19',
     },
     {
         date: '2025 – now',
@@ -115,7 +115,7 @@ const Home = () => (
                         writes what you blink.
                     </p>
                     <ul className="h-facts">
-                        <li><b>16</b>fixes merged into OpenCV and CCExtractor</li>
+                        <li><b>19</b>fixes merged into OpenCV and CCExtractor</li>
                         <li><b>&lt; 2 µm</b>inspection software, Nordic Tech Design</li>
                     </ul>
                     <div className="h-actions">
@@ -180,7 +180,7 @@ const Home = () => (
                     <div className="s-body">
                         <p>
                             I was fixing things other people had already fixed, from a copy of the code that
-                            was months out of date. So I changed how I work, and since September sixteen of my
+                            was months out of date. So I changed how I work, and since September nineteen of my
                             fixes have been merged.
                         </p>
                         <ol className="s-steps">

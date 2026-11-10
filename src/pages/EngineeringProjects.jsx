@@ -18,7 +18,7 @@ const featuredProjects = [
     {
         title: "Open Source — OpenCV & CCExtractor",
         description: "Contributor to two widely used open-source projects since September 2026. In OpenCV's core module I fixed functions that returned wrong or negative results on large values because of integer overflow; in CCExtractor, a C tool that extracts subtitles from broadcast video, I fixed memory-safety and cross-platform bugs.",
-        impact: "16 pull requests merged after maintainer review — 9 in OpenCV, 7 in CCExtractor",
+        impact: "19 pull requests merged after maintainer review — 11 in OpenCV, 8 in CCExtractor",
         tags: ["C", "OpenCV", "Memory Safety", "Regression Testing", "Code Review", "Cross-platform"],
         link: "https://github.com/search?q=author%3Apranayr710+is%3Apr+is%3Amerged&type=pullrequests",
         image: "work/opencv-pr.webp",
